@@ -1,0 +1,11 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local data cache hidden folder used by kagglehub
+.kagglehub/
+.data/
+
+# OS Specific files
+.DS_Store
+Thumbs.db
