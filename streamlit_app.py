@@ -20,13 +20,13 @@ st.markdown("---")
 col1, col2 = st.columns([1, 2])
 
 with col1:
-    st.header("1. User Inputs & Config")
+    st.header("User Inputs & Config")
     sport = st.selectbox("Sport Selected", ["NFL", "MLB", "NHL", "NCAA Football", "NCAA Basketball"])
     game = st.selectbox("Game Selection", ["Kansas City Chiefs vs. Buffalo Bills"])
     sim_count = st.selectbox("Simulation Count", [10000, 25000, 50000], index=1)
     kelly_frac = st.slider("Kelly Criterion Fraction", 0.10, 1.00, 0.25, step=0.05, help="0.25 = Quarter-Kelly")
     
-    st.subheader("B. Automated Pipeline Data Metrics")
+    st.subheader("Automated Pipeline Data Metrics")
     st.info("💡 Data pulled automatically into local project framework database context.")
     
     # Mocking structural variables fetched automatically by background worker pipelines
@@ -43,7 +43,7 @@ with col1:
     market_home_ml = st.number_input("Bills Moneyline Odds (Market)", value=-140)
 
 with col2:
-    st.header("2. Internal Simulation Processing Engine")
+    st.header("Internal Simulation Processing Engine")
     
     # Calculate processing modifications based on data metrics inputs
     # Rest advantage + QB baseline offset vs backup adjustments = +1.4 net points toward KC
@@ -65,11 +65,11 @@ with col2:
         ev, raw_k, final_unit_size = calculate_ev_and_kelly(results['away_prob'], market_away_ml, kelly_frac)
         
         # Presentation Layout Grid Displays
-        st.header("3. Model Output (Actionable Intelligence)")
+        st.header("Model Output (Actionable Intelligence)")
         
         sub_col1, sub_col2 = st.columns(2)
         with sub_col1:
-            st.subheader("A. Pure Projections (Fair Market)")
+            st.subheader("Pure Projections (Fair Market)")
             st.metric("Projected Score", f"Chiefs {results['away_score']} – Bills {results['home_score']}")
             st.metric("Win Probability", f"Chiefs {results['away_prob']*100:.1f}% | Bills {results['home_prob']*100:.1f}%")
             st.write(f"**Fair Moneyline:** Chiefs {fair_away_ml} | Bills {fair_home_ml}")
@@ -77,7 +77,7 @@ with col2:
             st.write(f"**Fair Total:** {results['fair_total']}")
             
         with sub_col2:
-            st.subheader("B. EV & Betting Edge Output")
+            st.subheader("EV & Betting Edge Output")
             
             # Formulate structured data evaluation metrics frame table
             metrics_table = {
@@ -88,7 +88,7 @@ with col2:
             st.table(pd.DataFrame(metrics_table))
             
         st.markdown("---")
-        st.subheader("C. Dashboard Display View")
+        st.subheader("Dashboard Display View")
         
         if ev > 0:
             st.error(f"""
